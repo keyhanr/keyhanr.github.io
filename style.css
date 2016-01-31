@@ -33,7 +33,7 @@ h1 {
 	text-align: center;
 	text-shadow: 0px 0px 5px rgba(100, 0, 250, 0.7);
 	color: #ddd;
-	margin: 0px 0 50px;
+	margin: 0px 0 30px;
 	-webkit-transition: all 0.8s ease-in;
 }
 
@@ -51,7 +51,11 @@ h2 {
 }
 
 hr {
-	border-color: #777;
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to left, rgba(0, 0, 0, 0), 
+    	rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+    margin: 5px;
 }
 
 p {
@@ -61,6 +65,14 @@ p {
 #wrapper {
 	min-width: 100%;
 	min-height: 100vh;
+}
+
+#footer {
+	padding: 40px 0 5px;
+	width: 100%;
+	font-size: 12px;
+	font-style: italic;
+	text-align: center;
 }
 
 #main {
