@@ -19,7 +19,7 @@ body {
     100% {background-color: #AABBFF;}
 }
 
-keyframes rainbow {
+@keyframes rainbow {
 	0% {background-color: #AABBFF;}
     33% {background-color: #EE77EE;}
     66% {background-color: #BBEE99;}
@@ -31,7 +31,7 @@ keyframes rainbow {
 	100% {text-shadow: 0px 0px 7px rgba(80, 70, 255, 1)}
 }
 
-keyframes glow {
+@keyframes glow {
 	0% {text-shadow: 0px 0px 5px rgba(100, 0, 250, 0.7)}
 	100% {text-shadow: 0px 0px 7px rgba(80, 70, 255, 1)}
 }
