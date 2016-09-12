@@ -84,6 +84,9 @@ p {
 	-webkit-animation-name:rainbow;
 	-webkit-animation-duration:10s;
 	-webkit-animation-iteration-count: infinite;
+	animation-name:rainbow;
+	animation-duration:10s;
+	animation-iteration-count: infinite;
 	margin: 0;
 }
 
