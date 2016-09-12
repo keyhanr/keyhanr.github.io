@@ -85,6 +85,7 @@ p {
 #footer {
 	padding: 40px 0 5px;
 	width: 100%;
+	bottom: 0px;
 	font-size: 12px;
 	font-style: italic;
 	text-align: center;
