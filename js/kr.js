@@ -113,7 +113,7 @@ function distance(x1, y1, x2, y2) {
 
 /* Get the radius of the circle depending on how close the cursor is */
 function getCircleRadius(distance) {
-	return Math.max(6, 24 - (distance * 0.12));
+	return Math.max(6, 27 - (distance * 0.1));
 }
 
 /* Show the kr canvas, hide the porjects div */
