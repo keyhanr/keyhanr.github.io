@@ -6,7 +6,7 @@ var projectsDiv = document.getElementById("projects");
 
 var leftMargin = 12; // Offset from left of canvas
 var topMargin = -55; // Offset from top of canvas
-var s = 12; // Space between dots
+var dotSpacing = 12; // Space between dots
 var grad0 = "#090";
 var grad1 = "#93f";
 
@@ -92,8 +92,8 @@ function init() {
 	// Turn grid coordinates to canvas coordinates
 	for (var i = 0; i < gridCoords.length; i++) {
 		canvasCoords.push(new Coord(
-			gridCoords[i][0] * s + leftMargin,
-			gridCoords[i][1] * s + topMargin)
+			gridCoords[i][0] * dotSpacing + leftMargin,
+			gridCoords[i][1] * dotSpacing + topMargin)
 		);
 	}
 
