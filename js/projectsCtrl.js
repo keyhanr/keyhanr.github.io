@@ -1,5 +1,5 @@
-var app = angular.module("homepage", []);
-app.controller("homepageCtrl", function($scope, $sce) {
+var app = angular.module("projects", []);
+app.controller("projectsCtrl", function($scope, $sce) {
 	  $scope.trustSrc = function(src) {
 	    return $sce.trustAsResourceUrl(src);
 	  }
