@@ -7,6 +7,8 @@ var projectsDiv = document.getElementById("projects");
 var leftMargin = 12; // Offset from left of canvas
 var topMargin = -55; // Offset from top of canvas
 var dotSpacing = 12; // Space between dots
+var minRadius = 6;
+var maxRadius = 26;
 var grad0 = "#090";
 var grad1 = "#93f";
 
@@ -113,7 +115,7 @@ function distance(x1, y1, x2, y2) {
 
 /* Get the radius of the circle depending on how close the cursor is */
 function getCircleRadius(distance) {
-	return Math.max(6, 27 - (distance * 0.1));
+	return Math.max(minRadius, maxRadius - (distance * 0.12));
 }
 
 /* Show the kr canvas, hide the porjects div */
