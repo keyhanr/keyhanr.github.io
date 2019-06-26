@@ -68,7 +68,6 @@ function init() {
 
 	// Run a bubble step every framerate milliseconds
 	interval = setInterval(bubble, framerate);
-	canvas.onmousedown = pause;
 }
 
 /* Circle object with (x, y) co-ordinate and radius */
@@ -104,13 +103,15 @@ function freshCircle() {
 }
 
 /* Pause the animations */
-function pause () {
+function pause() {
 	if (!paused) {
 		paused = true;
+		document.getElementById("pauseToggle").classList.add("paused");
 		interval = clearTimeout(interval);
 	}
 	else {
 		paused = false;
+		document.getElementById("pauseToggle").classList.remove("paused");
 		interval = setInterval(bubble, framerate);
 	}
 }

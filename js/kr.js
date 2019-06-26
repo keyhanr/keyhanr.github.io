@@ -1,5 +1,6 @@
 var krCanvas = document.getElementById("kr");
 var krContext = krCanvas.getContext("2d");
+var rect = krCanvas.getBoundingClientRect();
 var krWidth = krCanvas.width;
 var krHeight = krCanvas.height;
 var projectsDiv = document.getElementById("projects");
@@ -42,7 +43,7 @@ function render() {
 
 /* Start the drawing and animations */
 function init() {
-	krCanvas.onmousemove = setMouseLoc;
+	document.onmousemove = setMouseLoc;
 	krCanvas.style.zIndex = "3";
 
 	// Set the colour gradient
@@ -150,7 +151,6 @@ function switchVisible() {
 
 /* Sets the global mosue coordinates */
 function setMouseLoc(event) {
-    var rect = krCanvas.getBoundingClientRect();
     mX = event.clientX - rect.left;
     mY = event.clientY - rect.top;
     render();

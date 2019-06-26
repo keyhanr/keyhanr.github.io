@@ -38,6 +38,41 @@ body { background-color: #000}
 #footer {
     padding-top: 10px;
     text-align: right;
+    font-weight: normal;
+    font-size: 15px;
+    color: #999;
+    margin: 15px;
+    font-style: italic;
+}
+
+#pauseToggle {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    margin: 10px;
+    border: 0;
+    background: transparent;
+    box-sizing: border-box;
+    width: 0;
+    height: 30px;
+    opacity: 0.5;
+
+    border-color: transparent transparent transparent #000;
+    transition: 100ms all ease;
+    cursor: pointer;
+    /* Pause symbol */
+    border-style: double;
+    border-width: 0px 0px 0px 30px;
+}
+
+#pauseToggle.paused {
+    /* Play symbol */
+    border-style: solid;
+    border-width: 15px 0px 15px 30px;
+}
+
+#pauseToggle:hover {
+    opacity: 0.9;
 }
 
 .hidden {
@@ -67,6 +102,24 @@ body { background-color: #000}
     padding-left: 16px;
 }
 
+a {
+    text-decoration: none ;
+}
+
+a .project {
+    color: #999;
+    box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.6) inset;
+    -webkit-animation-duration:0.4s;
+    -webkit-transition: all 0.4s;
+    animation-duration:0.4s;
+    transition: all 0.4s;
+}
+
+a .project:hover {
+    box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.6);
+    background-color: #313131;
+}
+
 hr {
     border: 0;
     height: 1px;
@@ -90,33 +143,7 @@ h2 {
     color: #bbb;
 }
 
-#footer p {
-    font-weight: normal;
-    font-size: 15px;
-    color: #999;
-    margin: 15px;
-    font-style: italic;
-}
-
 p {
     font-size: 16px;
     font-weight: normal;
-}
-
-a {
-    text-decoration: none ;
-}
-
-a .project {
-    color: #999;
-    box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.6) inset;
-    -webkit-animation-duration:0.4s;
-    -webkit-transition: all 0.4s;
-    animation-duration:0.4s;
-    transition: all 0.4s;
-}
-
-a .project:hover {
-    box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.6);
-    background-color: #313131;
 }
