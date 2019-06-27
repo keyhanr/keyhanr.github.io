@@ -145,8 +145,6 @@ function switchVisible() {
 		projectsDiv.classList.remove("projectsShown");
 		showKr();
 	}
-	mX, mY = 0, 0; // Reset mouse coordinates to reset the kr
-	render();
 }
 
 /* Sets the global mosue coordinates */
