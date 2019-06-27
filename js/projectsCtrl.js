@@ -12,11 +12,6 @@ app.controller("projectsCtrl", function($scope, $sce) {
 				"desc": "A Chrome extension for saving and indexing image URLs."
 			},
 			{
-				"name": "Reversi",
-				"url": "https://github.com/keyhanr/Reversi",
-				"desc": "A Java based game made with a friend."
-			},
-			{
 				"name": "Momemory",
 				"url": "http://keyhanr.github.io/Momemory/",
 				"desc": "To investigate our sensory memory's capacity. (in the works)"
@@ -30,6 +25,11 @@ app.controller("projectsCtrl", function($scope, $sce) {
 				"name": "Tunnel",
 				"url": "http://keyhanr.github.io/Tunnel/",
 				"desc": "More fun with HTML5 Canvas! (in the works)"
+			},
+			{
+				"name": "Reversi",
+				"url": "https://github.com/keyhanr/Reversi",
+				"desc": "A Java based game made with a friend."
 			}
 		];
 		
