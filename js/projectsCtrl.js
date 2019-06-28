@@ -9,7 +9,7 @@ app.controller("projectsCtrl", function($scope, $sce) {
 			{
 				"name": "Kilxn",
 				"url": "https://chrome.google.com/webstore/detail/kilxn/aajbjhafaaaabakjnhngiblipmmkpedf",
-				"desc": "A Chrome extension for saving and indexing image URLs."
+				"desc": "A browser extension for saving and indexing image URLs."
 			},
 			{
 				"name": "Momemory",
