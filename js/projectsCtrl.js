@@ -12,9 +12,9 @@ app.controller("projectsCtrl", function($scope, $sce) {
 				"desc": "A browser extension for saving and indexing image URLs."
 			},
 			{
-				"name": "Momemory",
-				"url": "http://keyhanr.github.io/Momemory/",
-				"desc": "To investigate our sensory memory's capacity. (in the works)"
+				"name": "Reversi",
+				"url": "https://github.com/keyhanr/Reversi",
+				"desc": "A Java based game made with a friend."
 			},
 			{
 				"name": "Road",
@@ -27,9 +27,9 @@ app.controller("projectsCtrl", function($scope, $sce) {
 				"desc": "More fun with HTML5 Canvas!"
 			},
 			{
-				"name": "Reversi",
-				"url": "https://github.com/keyhanr/Reversi",
-				"desc": "A Java based game made with a friend."
+				"name": "Momemory",
+				"url": "http://keyhanr.github.io/Momemory/",
+				"desc": "Investigation on sensory memory capacity. (in the works)"
 			}
 		];
 		
