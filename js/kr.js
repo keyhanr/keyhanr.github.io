@@ -16,9 +16,9 @@ var grad1 = "#93f";
 // Will store coordinates on the canvas for circles forming the letters
 var canvasCoords = [];
 
-// Global mouse coordinates
-var mX = 0;
-var mY = 0;
+// Global mouse coordinates (begin off-screen)
+var mX = -100;
+var mY = -100;
 
 function render() { 
 	// Clear the canvas
