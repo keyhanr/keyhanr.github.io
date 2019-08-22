@@ -1,6 +1,9 @@
 // Get the HTML5 canvas to be animated on
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
+ctx.canvas.width  = window.innerWidth;
+ctx.canvas.height = window.innerHeight;
+
 var width = canvas.width;
 var height = canvas.height;
 

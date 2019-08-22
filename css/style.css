@@ -2,15 +2,42 @@
 
 body { background-color: #000}
 
-#kr {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    background-color: #111;
-    border-radius: 3%;
+a {
+    text-decoration: none ;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(
+        to left, 
+        rgba(0, 0, 0, 0),
+        rgba(205, 205, 205, 0.55)
+    );
+}
+
+h1 {
+    text-align: center;
+    font-weight: bold;
+    padding: 18px;
+    color: #ccc;
+}
+
+h2 {
+    font-weight: bold;
+    font-size: 21px;
+    color: #bbb;
+}
+
+h3 {
+    font-size: 16px;
+    font-weight: normal;
+    margin: 10px;
+}
+
+p {
+    font-size: 16px;
+    font-weight: normal;
 }
 
 #canvas {
@@ -21,6 +48,17 @@ body { background-color: #000}
     background-color: #000;
 }
 
+#kr {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-color: #111;
+    border-radius: 10px;
+}
+
 #projects {
     position: fixed;
     top: 0;
@@ -29,20 +67,24 @@ body { background-color: #000}
     right: 0;
     margin: auto;
     background-color: #111;
-    border-radius: 3%;
+    border-radius: 10px;
     font-family: 'Courier new', 'Courier', 'trebuchet ms', arial, sans-serif;
     color: #BBB;
     overflow: hidden;
 }
 
 #footer {
-    padding-top: 10px;
+    height: 40px;
     text-align: right;
     font-weight: normal;
     font-size: 15px;
     color: #999;
-    margin: 15px;
+    margin: auto;
     font-style: italic;
+}
+
+p #footer {
+    font-size: 200px;
 }
 
 #pauseToggle {
@@ -91,7 +133,7 @@ body { background-color: #000}
 }
 
 .projectsShown {
-	height: 550px;
+	height: 520px;
 	width: 375px;
 	transition-duration: 0.5s;
     opacity: 1;
@@ -101,10 +143,6 @@ body { background-color: #000}
     text-decoration: none;
     padding: 16px 0px;
     padding-left: 16px;
-}
-
-a {
-    text-decoration: none ;
 }
 
 a .project {
@@ -119,32 +157,4 @@ a .project {
 a .project:hover {
     box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.6);
     background-color: #313131;
-}
-
-hr {
-    border: 0;
-    height: 1px;
-    background-image: linear-gradient(
-        to left, 
-        rgba(0, 0, 0, 0),
-        rgba(205, 205, 205, 0.55)
-    );
-}
-
-h1 {
-    text-align: center;
-    font-weight: bold;
-    padding: 18px;
-    color: #ccc;
-}
-
-h2 {
-    font-weight: bold;
-    font-size: 21px;
-    color: #bbb;
-}
-
-p {
-    font-size: 16px;
-    font-weight: normal;
 }
