@@ -7,6 +7,11 @@ app.controller("projectsCtrl", function($scope, $sce) {
 	$scope.projects =
 		[
 			{
+				"name": "phorym",
+				"url": "https://phorym.com/",
+				"desc": "Algorithmic chatspace."
+			},
+			{
 				"name": "Kilxn",
 				"url": "https://chrome.google.com/webstore/detail/kilxn/aajbjhafaaaabakjnhngiblipmmkpedf",
 				"desc": "A browser extension for saving and indexing image URLs."
@@ -20,11 +25,6 @@ app.controller("projectsCtrl", function($scope, $sce) {
 				"name": "Road",
 				"url": "http://keyhanr.github.io/Road/",
 				"desc": "Fun with HTML5 Canvas!"
-			},
-			{
-				"name": "Tunnel",
-				"url": "http://keyhanr.github.io/Tunnel/",
-				"desc": "More fun with HTML5 Canvas!"
 			},
 			{
 				"name": "Momemory",
