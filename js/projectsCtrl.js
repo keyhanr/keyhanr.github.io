@@ -7,7 +7,7 @@ app.controller("projectsCtrl", function($scope, $sce) {
 	$scope.projects =
 		[
 			{
-				"name": "phorym",
+				"name": "phorym.com",
 				"url": "https://phorym.com/",
 				"desc": "Algorithmic chatspace."
 			},
