@@ -1,45 +1,38 @@
 <!DOCTYPE html>
-<html lang="en-US">
-	<head>
-		<title>keyhan</title>
-		<link rel="shortcut icon" href="http://www.iconj.com/ico/u/n/un7g3q5jvx.ico" type="image/x-icon" />
-		<link rel="stylesheet" type="text/css" href="css/style.css">
-	</head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desktop</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🖥️</text></svg>">
 
-	<body>
-		<div id="wrapper">
-			<canvas id="canvas" width="1680px" height="899px">
-				Your broswer does not support the Canvas feature.
-			</canvas>
+</head>
+<body>
+    <div id="desktop">
+        <div id="desktop-folder" class="folder" data-type="folder" data-path="keyhan" style="top: 20px; left: 20px;">
+            <img src="img/folder-icon.png" alt="Folder">
+            <span>keyhan</span>
+        </div>
+        <div id="selectionBox"></div>
+    </div>
 
-			<a href="#"><canvas id="kr" width="375px" height="375px"  class="krShown"  onclick="switchVisible()">
-				Your broswer does not support the Canvas feature.
-			</canvas></a>
-
-			<div id="projects" onclick="switchVisible()" class="hidden" ng-app="projects" ng-controller="projectsCtrl">
-				<div id="header">
-					<h1>Projects</h1>
-					<hr>
-				
-					<div ng-repeat="project in projects">
-						<a href="{{project.url}}"><div class="project">
-							<h2>{{project.name}}</h2>
-							<p>{{project.desc}}</p>
-						</div></a>
-					</div>
-				</div>
-
-				<div id="footer">
-					<hr>
-					<h3>kr © 2019</h3>
-				</div>
-			</div>
-			<div id="pauseToggle" onclick="pause()"></div>
-		</div>
-
-		<script src="js/background.js" type="text/javascript"></script>
-		<script src="js/kr.js" type="text/javascript"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-		<script src="js/projectsCtrl.js" type="text/javascript"></script>
-	</body>
+    <template id="windowTemplate">
+        <div class="window">
+            <div class="window-header">
+                <div class="window-controls">
+                    <button class="close"></button>
+                    <button class="minimize"></button>
+                    <button class="maximize"></button>
+                </div>
+                <div class="window-title"></div>
+            </div>
+            <div class="window-content"></div>
+            <div class="window-footer">
+                <div class="breadcrumb"></div>
+            </div>
+        </div>
+    </template>
+</body>
+<script src="scripts.js"></script>
 </html>
