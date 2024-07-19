@@ -6,8 +6,8 @@ const selectionBox = document.getElementById('selectionBox');
 
 let newWindowOffset = 23;
 let zIndexCounter = 1;
-let activeTop = 100;
-let activeLeft = 100;
+let activeTop = 70;
+let activeLeft = 60;
 let isSelecting = false;
 let startX, startY;
 
@@ -256,7 +256,19 @@ function getFileContents(path) {
             'Additional cognitive science major\n' +
             'September 2014 – May 2019',
         'keyhan/about.txt':
-            'My name is Keyhan Rezvani. Welcome.\nToronto, ON\nJuly 2024\nWebsite by yours truly & under construction.',
+            'My name is Keyhan Rezvani. Welcome.\nToronto, ON\nJuly 2024\nWebsite by yours truly & under construction.\n\n' +
+            'Known bugs:\n' +
+            '- iframes consume mouse events e.g can\'t refocus an iframe window by clicking on the contents\n' +
+            '\n' + 
+            'TODO:\n' +
+            '- Make responsive/mobile version\n' +
+            '- Ability to move folders/files\n' +
+            '- Hover for window control details\n' +
+            '- Resize windows from any corner/side\n' +
+            '- Add navigation arrows to windows\n' +
+            '- Maximize window should be reversible\n' +
+            '- Add games\n' +
+            '- Separate content from code',
         'keyhan/projects/phorym/phorym.webloc':
             'https://phorym.com',
         'keyhan/projects/phorym/README.txt': 
