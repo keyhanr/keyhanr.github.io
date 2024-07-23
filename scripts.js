@@ -13,7 +13,7 @@ let startX, startY;
 
 const files = {
     'keyhan': {
-        'experience': { 'files': ['AWS.txt', 'AcuityAds.txt', 'Paymentus.txt'] },
+        'experience': { 'files': ['AcuityAds.txt', 'Paymentus.txt', 'AWS.txt'] },
         'projects': { 'phorym': {'files': ['README.txt', 'phorym.webloc']}, 'files': ['kilxn.txt', 'insurance assistant.txt'] },
         'files': ['education.txt', 'about.txt']
     }

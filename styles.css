@@ -3,24 +3,20 @@
   font-weight: 400;
   src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff");
 }
-
 @font-face {
   font-family: "San Francisco";
   font-weight: 700;
   src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-bold-webfont.woff");
 }
-
 @font-face {
   font-family: "San Francisco";
   font-weight: 500;
   src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-medium-webfont.woff");
 }
-
 body {
     background: url('img/wallpaper.jpeg') no-repeat fixed center;
     background-size: cover;
 }
-
 body, html {
     margin: 0;
     padding: 0;
@@ -44,6 +40,15 @@ body, html {
 #desktop>.folder {
     color: #FFF;
     font-weight: 500;
+}
+#selectionBox {
+    position: absolute;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.2);
+    pointer-events: none;
+}
+.selected {
+    border: 2px solid #00f;
 }
 .selected-icon {
     outline: 2px solid #888;
@@ -164,14 +169,11 @@ textarea, textarea::selected {
     flex: 1;
     display: flex;
 }
-#selectionBox {
-    position: absolute;
-    border: 1px solid rgba(255, 255, 255, 0.8);
-    background: rgba(255, 255, 255, 0.2);
-    pointer-events: none;
+.textfile .window-navigation, .website .window-navigation {
+    display: none;
 }
-.selected {
-    border: 2px solid #00f;
+.website .window-content {
+    padding: 0px;
 }
 .window-navigation {
     display: flex;
@@ -179,9 +181,6 @@ textarea, textarea::selected {
     padding: 8px;
     background-color: #f9f9f9;
     border: 1px solid #eee;
-}
-.textfile .window-navigation, .website .window-navigation {
-    display: none;
 }
 .window-navigation button {
     width: 20px;
