@@ -173,3 +173,25 @@ textarea, textarea::selected {
 .selected {
     border: 2px solid #00f;
 }
+.window-navigation {
+    display: flex;
+    gap: 4px;
+    padding: 8px;
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+}
+.textfile .window-navigation, .website .window-navigation {
+    display: none;
+}
+.window-navigation button {
+    width: 20px;
+    height: 20px;
+    border: none;
+    background-color: #eee;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.window-navigation button:disabled {
+    background-color: #f9f9f9;
+    cursor: default;
+}

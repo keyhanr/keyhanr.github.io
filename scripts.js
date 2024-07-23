@@ -18,6 +18,7 @@ const files = {
         'files': ['education.txt', 'about.txt']
     }
 };
+const navigationHistory = new Map();
 
 desktop.addEventListener('mousedown', handleMouseDown);
 desktop.addEventListener('dblclick', handleDoubleClick);
@@ -133,13 +134,49 @@ function openWindow(type, path) {
     desktop.appendChild(newWindow);
 }
 
-function openFolder(path, windowElement) {
+function navigateBack(button) {
+    const windowElement = button.closest('.window');
+    const history = navigationHistory.get(windowElement) || { back: [], forward: [] };
+
+    if (history.back.length > 0) {
+        const currentPath = history.back.pop();
+        const previousPath = history.back.pop();
+        history.forward.push(currentPath);
+        navigationHistory.set(windowElement, history);
+        openFolder(previousPath, windowElement, false);
+    }
+
+    updateNavigationButtons(windowElement, history);
+}
+
+function navigateForward(button) {
+    const windowElement = button.closest('.window');
+    const history = navigationHistory.get(windowElement) || { back: [], forward: [] };
+
+    if (history.forward.length > 0) {
+        const nextPath = history.forward.pop();
+        openFolder(nextPath, windowElement, false);
+    }
+
+    updateNavigationButtons(windowElement, history);
+}
+
+function openFolder(path, windowElement, newNavigation=true) {
     const contentElement = windowElement.querySelector('.window-content');
     const breadcrumbElement = windowElement.querySelector('.breadcrumb');
 
     const folderContents = getFiles(path);
     breadcrumbElement.innerHTML = '';
     breadcrumbElement.appendChild(createBreadcrumb(path));
+
+    const history = navigationHistory.get(windowElement) || { back: [], forward: [] };
+    history.back.push(path);
+    if (newNavigation) {
+        history.forward = [];
+    }
+
+    navigationHistory.set(windowElement, history);
+    updateNavigationButtons(windowElement, history);
 
     if (folderContents) {
         let innerHTML = '<div class="main-content">';
@@ -174,15 +211,25 @@ function openFolder(path, windowElement) {
     }
 }
 
+function updateNavigationButtons(windowElement, history) {
+    const backBtn = windowElement.querySelector('.window-navigation .back');
+    const forwardBtn = windowElement.querySelector('.window-navigation .forward');
+
+    backBtn.disabled = history.back.length < 2;
+    forwardBtn.disabled = history.forward.length === 0;
+}
+
 function createBreadcrumb(path) {
     const breadcrumbElement = document.createElement('span');
     const paths = path.split('/');
     let breadcrumbHTML = '';
     let accumulatedPath = '';
+
     paths.forEach((part, index) => {
         accumulatedPath += (index > 0 ? '/' : '') + part;
-        breadcrumbHTML += `<span onclick="openFolder('${accumulatedPath}', this.closest('.window'))">${part}</span> > `;
+        breadcrumbHTML += `<span class="breadcrumb-part" onclick="openFolder('${accumulatedPath}', this.closest('.window'))">${part}</span> > `;
     });
+
     breadcrumbElement.innerHTML = breadcrumbHTML.slice(0, -3);
     return breadcrumbElement;
 }
@@ -265,7 +312,6 @@ function getFileContents(path) {
             '- Ability to move folders/files\n' +
             '- Hover for window control details\n' +
             '- Resize windows from any corner/side\n' +
-            '- Add navigation arrows to windows\n' +
             '- Maximize window should be reversible\n' +
             '- Add games\n' +
             '- Separate content from code',
