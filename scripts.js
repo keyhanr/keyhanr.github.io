@@ -222,15 +222,17 @@ function updateNavigationButtons(windowElement, history) {
 function createBreadcrumb(path) {
     const breadcrumbElement = document.createElement('span');
     const paths = path.split('/');
+    let pointerHTML = `<img class="breadcrumb_pointer" src="img/breadcrumb-pointer.png">`;
     let breadcrumbHTML = '';
     let accumulatedPath = '';
 
     paths.forEach((part, index) => {
         accumulatedPath += (index > 0 ? '/' : '') + part;
-        breadcrumbHTML += `<span class="breadcrumb-part" onclick="openFolder('${accumulatedPath}', this.closest('.window'))">${part}</span> > `;
+        breadcrumbHTML += ``
+        breadcrumbHTML += `<span class="breadcrumb-part" onclick="openFolder('${accumulatedPath}', this.closest('.window'))"><img class="breadcrumb_icon" src="img/breadcrumb-icon.png">${part}${pointerHTML}</span>`;
     });
 
-    breadcrumbElement.innerHTML = breadcrumbHTML.slice(0, -3);
+    breadcrumbElement.innerHTML = breadcrumbHTML.slice(0, -pointerHTML.length);
     return breadcrumbElement;
 }
 
