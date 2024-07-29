@@ -89,6 +89,7 @@ body, html {
     background-image: url(img/forward-icon.png);
 }
 .back, .forward {
+    opacity: 95%;
     padding: 13px 16px;
     border-radius: 5px;
     width: 22px;
@@ -100,13 +101,13 @@ body, html {
     background-color: #fff;
 }
 .back:hover, .forward:hover {
-    background-color: #f2f2f2;
+    background-color: #efefef;
 }
 .back:active, .forward:active {
-    background-color: #eeeeee;
+    background-color: #e4e4e4;
 }
 .back:disabled, .forward:disabled {
-    opacity: 50%;
+    opacity: 30%;
     background-color: transparent;
 }
 .window {
