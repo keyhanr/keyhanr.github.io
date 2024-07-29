@@ -99,14 +99,15 @@ body, html {
     border: none;
     background-color: #fff;
 }
-.back:disabled, .forward:disabled {
-    opacity: 50%;
-}
 .back:hover, .forward:hover {
     background-color: #f2f2f2;
 }
 .back:active, .forward:active {
     background-color: #eeeeee;
+}
+.back:disabled, .forward:disabled {
+    opacity: 50%;
+    background-color: transparent;
 }
 .window {
     position: absolute;
