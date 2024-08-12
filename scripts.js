@@ -15,7 +15,7 @@ const files = {
     'keyhan': {
         'experience': { 'files': ['AcuityAds.txt', 'Paymentus.txt', 'AWS.txt'] },
         'projects': { 'phorym': {'files': ['README.txt', 'phorym.webloc']}, 'files': ['kilxn.txt', 'insurance assistant.txt'] },
-        'files': ['education.txt', 'about.txt']
+        'files': ['education.txt', 'skills.txt', 'about.txt']
     }
 };
 const navigationHistory = new Map();
@@ -303,7 +303,11 @@ function getFileContents(path) {
             'Graduated with distinction\n' +
             'Computer science double major\n' + 
             'Additional cognitive science major\n' +
-            'September 2014 – May 2019',
+            'September 2014 – May 2019',        
+        'keyhan/skills.txt':
+            '- Java\n- Javascript\n- Python\n- Ruby\n- SQL\n- HTML\n- CSS\n- TypeScript\n- shell scripting\n- AWS technologies\n- Spring\n- Node\n- Flask\n' +
+            '- Experienced with Agile, Scrum, and Kanban methodologies and collaborative tools like Git, JIRA, and Asana\n' +
+            '- Green thumbed, loves taking care of my many plants\n- Training for a half-marathon this coming autumn\n- Antique & history enthusiast',
         'keyhan/about.txt':
             'My name is Keyhan Rezvani. Welcome.\nToronto, ON\nJuly 2024\nWebsite by yours truly & under construction.\n\n' +
             'Known bugs:\n' +
@@ -315,6 +319,7 @@ function getFileContents(path) {
             '- Hover for window control details\n' +
             '- Resize windows from any corner/side\n' +
             '- Maximize window should be reversible\n' +
+            '- Add dock\n' +
             '- Add games\n' +
             '- Separate content from code',
         'keyhan/projects/phorym/phorym.webloc':
@@ -322,40 +327,44 @@ function getFileContents(path) {
         'keyhan/projects/phorym/README.txt': 
             '***NOTE***\nYou can not log in through the .webloc in this folder. You must visit Phorym directly (phorym.com) to login and access all features.\n\n' +
             'https://phorym.com\n\nJanuary 2021 - present\n\n' +
-            '- Dynamic community-building chatspace which hosts 500+ users and tens of thousands of posts.\n\n' +
-            '- Web forum which curates topic feeds per user based on chat styles and behaviours using NLP.\n\n' +
+            '- Dynamic community-building forum which hosts 500+ users and tens of thousands of posts.\n\n' +
             '- Server runs on an AWS EC2 instance using Express in NodeJS with a MongoDB, and Three.js graphics.\n\n' +
-            '- Conceived, created, and maintained independently as a passion project.\n\n' +
-            '- Algorithm uses a statistical model to analyze posts to determine keywords for calculating relevance in realtime.\n\n' + 
-            '- Separate and secure administrator interface for moderating posts, users, and IP addresses.\n\n' +
+            '- Curates topic feeds per user based on chat styles using NLP.\n\n' +
+            '- Algorithm uses a statistical model to analyze posts to determine keywords for calculating relevance in realtime.\n\n' +
+            '- Separate and secure administrator interface for moderating posts, users, and IP addresses.\n\n' + 
             '- JSON web tokens ensure account authentication and authorization.\n\n' +
-            '- Follows HTTPS, web traffic is encrypted using TLS.',
+            '- Follows HTTPS, web traffic is encrypted using TLS.\n\n' +
+            '- Conceived, created, and maintained independently as a passion project.',
         'keyhan/projects/kilxn.txt': 
             'Chrome extension\nhttps://chromewebstore.google.com/detail/kilxn/aajbjhafaaaabakjnhngiblipmmkpedf\nNovember 2015\n\n' +
             '- Lightweight browser extension for locally storing and indexing image URLs for ease of access.\n\n' +
             '- Published in the Chrome Web Store.',
         'keyhan/projects/insurance assistant.txt': 
             'Insurance broker assistant\nJuly 2024\n\n' +
-            '- Written in Python using Streamlit and OpenAI assistants API\n\n' +
-            '- Policy document comparer and summarizer\n\n' +
-            '- Knowledge base researcher - upload documents and ask questions',
+            '- Flask server written in Python running on an AWS EC2 instance with a Angular 18 TypeScript frontend.\n\n' +
+            '- Utilizes OpenAI’s Assistant API to make use of LLMs.\n\n' +
+            '- Provides insurance-specific solutions like policy comparison, summarization, and meeting note-taking.',
         'keyhan/experience/AWS.txt':
             'System Development Engineer\nSeattle, WA\nDecember 2021 - May 2023\n\n' + 
-            '- Planned and developed a framework synchronizing dozens of resources automating service builds across regions, reducing developer efforts from months to weeks within Config using native AWS technologies and Ruby.\n\n' + 
-            '- Simplified deployment architectures and procedures across the AWS Config organization.\n\n' +
-            '- Maintained shared pipelines, deployments, and resources within AWS Config.\n\n' +
-            '- Handled availability issues during week-long oncall shifts requiring response times under 15 minutes at all hours.',
+            '- Planned and developed a framework which synchronizes initialization of dozens of AWS resources (EC2 servers, VPCs, CloudWatch, IAM profiles, SQS, etc), automating service builds for new regions.\n\n' + 
+            '- Increased efficiency and reduced developer efforts from months to weeks (over 70%) within AWS Config using native AWS technologies and Ruby to automate service builds.\n\n' +
+            '- Maintained pipelines, version sets, and deployments shared between multiple teams within AWS Config.\n\n' +
+            '- Maintained and developed on the organization’s main server entry point running on Spring Framework in Java.\n\n' + 
+            '- Investigated and resolved availability issues during week-long 24h oncall shifts.\n\n',
         'keyhan/experience/AcuityAds.txt': 
             'Java Developer\nToronto, ON\nMay 2017 - May 2018\n\n' + '- Implemented features across the stack which are used by advertising agencies to target audiences programmatically.\n\n' +
-            '- Developed and optimized a custom metric summarization feature in Druid dealing with millions of records.\n\n' +
+            '- Implemented programmatic audience targeting features across the stack which are used by advertising agencies.\n\n' +
             '- Implemented an interface for clients to target audiences experiencing certain weather conditions with specific ads.\n\n' +
-            '- Located bugs and applied fixes across the stack, from the browser to the ad-space bidder.',
+            '- Developed and optimized a custom metric summarization feature in Druid dealing with millions of records.\n\n' +
+            '- Located bugs and applied fixes across the stack, from the browser to the ad-space bidder.\n\n' +
+            '- Worked with Java, Spring, and SQL for the backend and AngularJS for the frontend.',
         'keyhan/experience/Paymentus.txt': 
             'QA Automation Engineer\nRichmond Hill, ON\nSeptember 2019 - January 2021\n\n' +
-            '- Developed and deployed automated test scripts to CI/CD pipelines to verify functionality of releases, increasing test coverage by 30% while reducing test runtime.\n\n' +
-            '- Worked on thread parallelization to reduce regression test suite runtime to 30 minutes, down from 4 hours.\n\n' +
-            '- Enhanced test reporting to better explain failing test scenarios, analyzed test reports daily to troubleshoot regression.\n\n' +
-            '- Maintained and improved automation frameworks using Jest, Puppeteer, NodeJS, and Selenium.'
+            '- Developed and deployed automated E2E test scripts to CI/CD pipelines to verify full functionality of releases, increasing test coverage by 30%.\n\n' +
+            '- Reduced test suite runtime from 4 hours to 30 minutes using thread parallelization.\n\n' +
+            '- Enhanced test reporting to better explain failing test scenarios and save developer time in pinpointing bugs.\n\n' +
+            '- Analyzed test reports daily and before releases to mitigate and troubleshoot regression.\n\n' +
+            '- Maintained and improved automation frameworks using Jest, Puppeteer, NodeJS, and Selenium, BrowserStack, Jenkins, and Javascript and Java.'
     };
     return contents[path] || 'File contents';
 }
