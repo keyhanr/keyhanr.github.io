@@ -340,10 +340,11 @@ function getFileContents(path) {
             '- Lightweight browser extension for locally storing and indexing image URLs for ease of access.\n\n' +
             '- Published in the Chrome Web Store.',
         'keyhan/projects/insurance assistant.txt': 
-            'Insurance broker assistant\nJuly 2024\n\n' +
+            'Insurance broker assistant & toolbox\nJuly 2024\n\n' +
             '- Flask server written in Python running on an AWS EC2 instance with a Angular 18 TypeScript frontend.\n\n' +
-            '- Utilizes OpenAI’s Assistant API to make use of LLMs.\n\n' +
-            '- Provides insurance-specific solutions like policy comparison, summarization, and meeting note-taking.',
+            '- Utilizes OpenAI’s Assistants API to make use of LLMs.\n\n' +
+            '- S3 blob storage for insurance documents in user knowledge bases.\n\n' +
+            '- Provides insurance-specific solutions like policy comparison, summarization, knowledge base querying, and meeting note-taking.',
         'keyhan/experience/AWS.txt':
             'System Development Engineer\nSeattle, WA\nDecember 2021 - May 2023\n\n' + 
             '- Planned and developed a framework which synchronizes initialization of dozens of AWS resources (EC2 servers, VPCs, CloudWatch, IAM profiles, SQS, etc), automating service builds for new regions.\n\n' + 
