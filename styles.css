@@ -145,7 +145,7 @@ textarea, textarea::selected {
     height: 100%;
     border: none
 }
-.textfile {
+.textfile textarea {
     resize: none;
     outline: none !important;
     border: none;
@@ -224,15 +224,10 @@ textarea, textarea::selected {
     padding: 8px;
     border: 1px solid #eee;
 }
-
-.aitify\.webloc {
-}
-
 .snake\.exe {
     width: 410px;
     height: 442px;
 }
-
 .exe img {
     height: 60px;
     width: 60px;

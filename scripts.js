@@ -11,7 +11,8 @@ let activeTop = 70;
 let activeLeft = 60;
 let isSelecting = false;
 let startX, startY;
-let singletons = { 'snake.exe': null };
+const singletons = { 'snake.exe': null };
+const navigationHistory = new Map();
 
 const files = {
     'keyhan': {
@@ -31,12 +32,6 @@ const files = {
         }
     }
 };
-const navigationHistory = new Map();
-
-desktop.addEventListener('mousedown', handleMouseDown);
-desktop.addEventListener('dblclick', handleDoubleClick);
-desktop.addEventListener('mousemove', handleMouseMove);
-desktop.addEventListener('mouseup', handleMouseUp);
 
 function getFiles(path) {
     return path.split('/').reduce((current, part) => (part in current ? current[part] : null), files);
@@ -74,6 +69,11 @@ function handleMouseDown(e) {
         selectionBox.style.display = '';
     }
 }
+
+desktop.addEventListener('mousedown', handleMouseDown);
+desktop.addEventListener('dblclick', handleDoubleClick);
+desktop.addEventListener('mousemove', handleMouseMove);
+desktop.addEventListener('mouseup', handleMouseUp);
 
 function handleDoubleClick(e) {
     const target = e.target.closest('.folder, .file');
@@ -153,7 +153,8 @@ function openWindow(type, path) {
     titleElement.textContent = filename;
     activeLeft += newWindowOffset;
     activeTop += newWindowOffset;
-
+    addWindowEventListeners(windowElement);
+    
     if (type === 'folder') {
         openFolder(path, windowElement);
         desktop.appendChild(newWindow);
@@ -167,11 +168,12 @@ function openWindow(type, path) {
         desktop.appendChild(newWindow);
     } else if (type === 'exe') {
         if (!singletons[filename]) {
-            newWindow.querySelector('.window-navigation').remove();
-            newWindow.querySelector('.window-footer').remove();
+            windowElement.querySelector('.window-navigation').remove();
+            windowElement.querySelector('.window-footer').remove();
             contentElement.innerHTML = `<canvas id="${filename}Canvas" width="400" height="400"></canvas>`;
             desktop.appendChild(newWindow);
             singletons[filename] = windowElement;
+            windowElement.style.resize = 'none';
         } else {
             bringToFront(singletons[filename]);
             if (!desktop.contains(singletons[filename])) {
@@ -181,8 +183,6 @@ function openWindow(type, path) {
         }
         getFileContents(path)();
     }
-
-    addWindowEventListeners(windowElement);
 }
 
 function navigateBack(button) {
