@@ -1,6 +1,7 @@
 const imgPath = 'img/'
 const desktop = document.getElementById('desktop');
 const desktopFolder = document.getElementById('desktop-folder');
+const miscFolder = document.getElementById('misc-folder');
 const windowTemplate = document.getElementById('windowTemplate').content;
 const selectionBox = document.getElementById('selectionBox');
 
@@ -10,12 +11,22 @@ let activeTop = 70;
 let activeLeft = 60;
 let isSelecting = false;
 let startX, startY;
+let singletons = { 'snake.exe': null };
 
 const files = {
     'keyhan': {
-        'experience': { 'files': ['AcuityAds.txt', 'Paymentus.txt', 'AWS.txt'] },
-        'projects': { 'phorym': {'files': ['README.txt', 'phorym.webloc']}, 'files': ['kilxn.txt', 'insurance assistant.txt'] },
+        'experience': {
+            'files': ['AcuityAds.txt', 'Paymentus.txt', 'AWS.txt'] },
+        'projects': { 
+            'phorym': 
+                {'files': ['README.txt', 'phorym.webloc']}, 
+            'aitify': 
+                {'files': ['README.txt', 'aitify.webloc']}, 
+            'files': ['kilxn.txt'] },
         'files': ['education.txt', 'skills.txt', 'about.txt']
+    },
+    'misc': {
+        'files': [ 'snake.exe' ]
     }
 };
 const navigationHistory = new Map();
@@ -33,11 +44,22 @@ function handleMouseDown(e) {
     const target = e.target.closest('.folder, .file, .window, #desktop');
     const folderImg = desktopFolder.querySelector('img');
     const folderSpan = desktopFolder.querySelector('span');
+    const miscImg = miscFolder.querySelector('img');
+    const miscSpan = miscFolder.querySelector('span');
     
     if (target === desktopFolder) {
         folderImg.classList.add('selected-icon');
         folderSpan.classList.add('selected-span');
+        miscImg.classList.remove('selected-icon');
+        miscSpan.classList.remove('selected-span');
+    } else if (target === miscFolder) {
+        miscImg.classList.add('selected-icon');
+        miscSpan.classList.add('selected-span');
+        folderImg.classList.remove('selected-icon');
+        folderSpan.classList.remove('selected-span');
     } else if (target === desktop) {
+        miscImg.classList.remove('selected-icon');
+        miscSpan.classList.remove('selected-span');
         folderImg.classList.remove('selected-icon');
         folderSpan.classList.remove('selected-span');
     }
@@ -92,9 +114,12 @@ function updateSelectionBox(currentX, currentY) {
 
 function updateFolderSelection() {
     const { left: fLeft, right: fRight, top: fTop, bottom: fBottom } = desktopFolder.getBoundingClientRect();
+    const { left: mLeft, right: mRight, top: mTop, bottom: mBottom } = miscFolder.getBoundingClientRect();
     const { left: sLeft, right: sRight, top: sTop, bottom: sBottom } = selectionBox.getBoundingClientRect();
     const folderImg = desktopFolder.querySelector('img');
     const folderSpan = desktopFolder.querySelector('span');
+    const miscImg = miscFolder.querySelector('img');
+    const miscSpan = miscFolder.querySelector('span');
     
     if (fRight >= sLeft && fLeft <= sRight && fBottom >= sTop && fTop <= sBottom) {
         folderImg.classList.add('selected-icon');
@@ -103,6 +128,13 @@ function updateFolderSelection() {
         folderImg.classList.remove('selected-icon');
         folderSpan.classList.remove('selected-span');
     }
+    if (mRight >= sLeft && mLeft <= sRight && mBottom >= sTop && mTop <= sBottom) {
+        miscImg.classList.add('selected-icon');
+        miscSpan.classList.add('selected-span');
+    } else {
+        miscImg.classList.remove('selected-icon');
+        miscSpan.classList.remove('selected-span');
+    }
 }
 
 function openWindow(type, path) {
@@ -110,28 +142,45 @@ function openWindow(type, path) {
     const windowElement = newWindow.querySelector('.window');
     const titleElement = newWindow.querySelector('.window-title');
     const contentElement = newWindow.querySelector('.window-content');
+    const filename = path.split('/').pop();
 
     windowElement.style.zIndex = zIndexCounter++;
     windowElement.style.top = `${activeTop + newWindowOffset}px`;
     windowElement.style.left = `${activeLeft + newWindowOffset}px`;
+    windowElement.classList.add(filename);
+    titleElement.textContent = filename;
     activeLeft += newWindowOffset;
     activeTop += newWindowOffset;
 
     if (type === 'folder') {
         openFolder(path, windowElement);
-        titleElement.textContent = path.split('/').pop();
+        desktop.appendChild(newWindow);
     } else if (type === 'file') {
         windowElement.classList.add('textfile');
-        titleElement.textContent = path.split('/').pop();
         contentElement.innerHTML = `<textarea class="textfile" style="width: 100%; height: 100%;">${getFileContents(path)}</textarea>`;
+        desktop.appendChild(newWindow);
     } else if (type === 'website') {
         windowElement.classList.add('website');
-        titleElement.textContent = path.split('/').pop();
         contentElement.innerHTML = `<iframe class="website_iframe" src="${getFileContents(path)}"></iframe>`;
+        desktop.appendChild(newWindow);
+    } else if (type === 'exe') {
+        if (!singletons[filename]) {
+            newWindow.querySelector('.window-navigation').remove();
+            newWindow.querySelector('.window-footer').remove();
+            contentElement.innerHTML = `<canvas id="${filename}Canvas" width="400" height="400"></canvas>`;
+            desktop.appendChild(newWindow);
+            singletons[filename] = windowElement;
+        } else {
+            bringToFront(singletons[filename]);
+            if (!desktop.contains(singletons[filename])) {
+                desktop.appendChild(singletons[filename]);
+            }
+            singletons[filename].style.display = 'flex'
+        }
+        getFileContents(path)();
     }
 
     addWindowEventListeners(windowElement);
-    desktop.appendChild(newWindow);
 }
 
 function navigateBack(button) {
@@ -195,6 +244,12 @@ function openFolder(path, windowElement, newNavigation=true) {
                     innerHTML += `
                         <div class="file" data-type="website" data-path="${path}/${file}">
                             <img src="${imgPath}website-icon.png" alt="File">
+                            <span>${file}</span>
+                        </div>`;
+                } else if (file.endsWith('.exe')) {
+                    innerHTML += `
+                        <div class="file" data-type="exe" data-path="${path}/${file}">
+                            <img src="${imgPath}exe-icon.png" alt="File">
                             <span>${file}</span>
                         </div>`;
                 } else {
@@ -312,8 +367,10 @@ function getFileContents(path) {
             'My name is Keyhan Rezvani. Welcome.\nToronto, ON\nJuly 2024\nWebsite by yours truly & under construction.\n\n' +
             'Known bugs:\n' +
             '- iframes consume mouse events e.g can\'t refocus an iframe window by clicking on the contents\n' +
+            '- Snake game controls are applied even when window is not active\n' +
             '\n' + 
             'TODO:\n' +
+            '- Snake game should have walls, game should start on first keydown\n' +
             '- Make responsive/mobile version\n' +
             '- Ability to move folders/files\n' +
             '- Hover for window control details\n' +
@@ -335,16 +392,19 @@ function getFileContents(path) {
             '- JSON web tokens ensure account authentication and authorization.\n\n' +
             '- Follows HTTPS, web traffic is encrypted using TLS.\n\n' +
             '- Conceived, created, and maintained independently as a passion project.',
-        'keyhan/projects/kilxn.txt': 
-            'Chrome extension\nhttps://chromewebstore.google.com/detail/kilxn/aajbjhafaaaabakjnhngiblipmmkpedf\nNovember 2015\n\n' +
-            '- Lightweight browser extension for locally storing and indexing image URLs for ease of access.\n\n' +
-            '- Published in the Chrome Web Store.',
-        'keyhan/projects/insurance assistant.txt': 
+        'keyhan/projects/aitify/aitify.webloc':
+            'https://aitify.app/',
+        'keyhan/projects/aitify/README.txt': 
+            '***NOTE***\nAccess is limited at the moment, if you\'re interested in seeing it please let me know!\n\n' +
             'Insurance broker assistant & toolbox\nJuly 2024\n\n' +
             '- Flask server written in Python running on an AWS EC2 instance with a Angular 18 TypeScript frontend.\n\n' +
             '- Utilizes OpenAI’s Assistants API to make use of LLMs.\n\n' +
             '- S3 blob storage for insurance documents in user knowledge bases.\n\n' +
             '- Provides insurance-specific solutions like policy comparison, summarization, knowledge base querying, and meeting note-taking.',
+        'keyhan/projects/kilxn.txt': 
+            'Chrome extension\nhttps://chromewebstore.google.com/detail/kilxn/aajbjhafaaaabakjnhngiblipmmkpedf\nNovember 2015\n\n' +
+            '- Lightweight browser extension for locally storing and indexing image URLs for ease of access.\n\n' +
+            '- Published in the Chrome Web Store.',
         'keyhan/experience/AWS.txt':
             'System Development Engineer\nSeattle, WA\nDecember 2021 - May 2023\n\n' + 
             '- Planned and developed a framework which synchronizes initialization of dozens of AWS resources (EC2 servers, VPCs, CloudWatch, IAM profiles, SQS, etc), automating service builds for new regions.\n\n' + 
@@ -365,7 +425,103 @@ function getFileContents(path) {
             '- Reduced test suite runtime from 4 hours to 30 minutes using thread parallelization.\n\n' +
             '- Enhanced test reporting to better explain failing test scenarios and save developer time in pinpointing bugs.\n\n' +
             '- Analyzed test reports daily and before releases to mitigate and troubleshoot regression.\n\n' +
-            '- Maintained and improved automation frameworks using Jest, Puppeteer, NodeJS, and Selenium, BrowserStack, Jenkins, and Javascript and Java.'
+            '- Maintained and improved automation frameworks using Jest, Puppeteer, NodeJS, and Selenium, BrowserStack, Jenkins, and Javascript and Java.',
+        'misc/snake.exe':
+            startSnakeGame
     };
     return contents[path] || 'File contents';
+}
+
+let snakeInterval;
+
+function startSnakeGame() {
+    const canvas = document.getElementById('snake.exeCanvas');
+    const ctx = canvas.getContext('2d');
+    const gridSize = 20;
+    const tileCount = canvas.width / gridSize;
+    
+    let snake = [{ x: 10, y: 10 }];
+    let food = { x: 5, y: 5 };
+    let direction = { x: 1, y: 0 };
+    let nextDirection = { ...direction };
+
+    // Clear previous game interval if one exists
+    if (snakeInterval) {
+        clearInterval(snakeInterval);
+    }
+
+    // Reset canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Remove previous keydown event listener
+    document.removeEventListener('keydown', handleKeydown);
+
+    // Add a fresh keydown event listener for controlling the snake
+    document.addEventListener('keydown', handleKeydown);
+
+    function handleKeydown(e) {
+        if (e.key === 'ArrowUp' && direction.y === 0) {
+            nextDirection = { x: 0, y: -1 };
+        } else if (e.key === 'ArrowDown' && direction.y === 0) {
+            nextDirection = { x: 0, y: 1 };
+        } else if (e.key === 'ArrowLeft' && direction.x === 0) {
+            nextDirection = { x: -1, y: 0 };
+        } else if (e.key === 'ArrowRight' && direction.x === 0) {
+            nextDirection = { x: 1, y: 0 };
+        }
+    }
+
+    function gameLoop() {
+        direction = { ...nextDirection };
+
+        // Calculate new snake head
+        const newHead = {
+            x: (snake[0].x + direction.x + tileCount) % tileCount,
+            y: (snake[0].y + direction.y + tileCount) % tileCount,
+        };
+
+        // Check collision with the body
+        if (snake.some(segment => segment.x === newHead.x && segment.y === newHead.y)) {
+            gameOver();
+            return;
+        }
+
+        // Add the new head
+        snake.unshift(newHead);
+
+        // Check if snake eats the food
+        if (newHead.x === food.x && newHead.y === food.y) {
+            // Generate new food at a random position
+            food = {
+                x: Math.floor(Math.random() * tileCount),
+                y: Math.floor(Math.random() * tileCount),
+            };
+        } else {
+            // Remove the last part of the snake (tail)
+            snake.pop();
+        }
+
+        // Clear the canvas for the new frame
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Draw the food
+        ctx.fillStyle = 'red';
+        ctx.fillRect(food.x * gridSize, food.y * gridSize, gridSize, gridSize);
+
+        // Draw the snake
+        ctx.fillStyle = 'green';
+        snake.forEach(segment => {
+            ctx.fillRect(segment.x * gridSize, segment.y * gridSize, gridSize, gridSize);
+        });
+    }
+
+    function gameOver() {
+        clearInterval(snakeInterval);
+        ctx.fillStyle = 'red';
+        ctx.font = 'bold 30px Courier New';
+        ctx.fillText('GAME OVER', canvas.width / 4 + 20, canvas.height / 2);
+    }
+
+    // Start the game loop
+    snakeInterval = setInterval(gameLoop, 100);
 }

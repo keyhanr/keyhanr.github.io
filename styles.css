@@ -215,7 +215,7 @@ textarea, textarea::selected {
 .textfile .window-navigation, .website .window-navigation {
     display: none;
 }
-.website .window-content {
+.website .window-content, .exe .window-content {
     padding: 0px;
 }
 .window-navigation {
@@ -223,4 +223,17 @@ textarea, textarea::selected {
     gap: 4px;
     padding: 8px;
     border: 1px solid #eee;
+}
+
+.aitify\.webloc {
+}
+
+.snake\.exe {
+    width: 410px;
+    height: 427px;
+}
+
+.exe img {
+    height: 60px;
+    width: 60px;
 }
