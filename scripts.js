@@ -26,7 +26,9 @@ const files = {
         'files': ['education.txt', 'skills.txt', 'about.txt']
     },
     'misc': {
-        'files': [ 'snake.exe' ]
+        'snake' : {
+            'files': [ 'README.txt', 'snake.exe' ]
+        }
     }
 };
 const navigationHistory = new Map();
@@ -426,8 +428,11 @@ function getFileContents(path) {
             '- Enhanced test reporting to better explain failing test scenarios and save developer time in pinpointing bugs.\n\n' +
             '- Analyzed test reports daily and before releases to mitigate and troubleshoot regression.\n\n' +
             '- Maintained and improved automation frameworks using Jest, Puppeteer, NodeJS, and Selenium, BrowserStack, Jenkins, and Javascript and Java.',
-        'misc/snake.exe':
-            startSnakeGame
+        'misc/snake/snake.exe':
+            startSnakeGame,
+        'misc/snake/README.txt':
+            'Just a little bit of fun! Walls coming soon.\n' +
+            '(It\'s not really an .exe! Just an in browser canvas game)'
     };
     return contents[path] || 'File contents';
 }
