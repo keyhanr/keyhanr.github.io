@@ -397,12 +397,12 @@ function getFileContents(path) {
         'keyhan/projects/aitify/aitify.webloc':
             'https://aitify.app/',
         'keyhan/projects/aitify/README.txt': 
-            '***NOTE***\nAccess is limited at the moment, if you\'re interested in seeing it please let me know!\n\n' +
+            '***NOTE***\nAccess is restricted at the moment, if you\'re interested in seeing it please let me know and I\'ll register you a demo account!\n\n' +
             'Insurance broker assistant & toolbox\nJuly 2024\n\n' +
             '- Flask server written in Python running on an AWS EC2 instance with a Angular 18 TypeScript frontend.\n\n' +
             '- Utilizes OpenAI’s Assistants API to make use of LLMs.\n\n' +
             '- S3 blob storage for insurance documents in user knowledge bases.\n\n' +
-            '- Provides insurance-specific solutions like policy comparison, summarization, knowledge base querying, and meeting note-taking.',
+            '- Provides insurance-specific solutions like policy comparison, summarization, knowledge base querying, and meeting transcribing and note-taking.',
         'keyhan/projects/kilxn.txt': 
             'Chrome extension\nhttps://chromewebstore.google.com/detail/kilxn/aajbjhafaaaabakjnhngiblipmmkpedf\nNovember 2015\n\n' +
             '- Lightweight browser extension for locally storing and indexing image URLs for ease of access.\n\n' +
