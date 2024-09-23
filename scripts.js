@@ -369,10 +369,10 @@ function getFileContents(path) {
             'My name is Keyhan Rezvani. Welcome.\nToronto, ON\nJuly 2024\nWebsite by yours truly & under construction.\n\n' +
             'Known bugs:\n' +
             '- iframes consume mouse events e.g can\'t refocus an iframe window by clicking on the contents\n' +
-            '- Snake game controls are applied even when window is not active\n' +
+            '- Snake game controls are applied even when the window is not active\n' +
             '\n' + 
             'TODO:\n' +
-            '- Snake game should have walls, game should start on first keydown\n' +
+            '- Snake game should have walls, game should begin on first keydown\n' +
             '- Make responsive/mobile version\n' +
             '- Ability to move folders/files\n' +
             '- Hover for window control details\n' +
@@ -431,7 +431,8 @@ function getFileContents(path) {
         'misc/snake/snake.exe':
             startSnakeGame,
         'misc/snake/README.txt':
-            'Just a little bit of fun! Walls coming soon. Restarting the .exe will restart the game.\n' +
+            'Just a little bit of fun! Walls coming soon.\n' + 
+            'Restarting the .exe will restart the game.\n' +
             '(It\'s not really an .exe! Just an in-browser canvas game for here)'
     };
     return contents[path] || 'File contents';
