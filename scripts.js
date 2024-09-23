@@ -431,8 +431,8 @@ function getFileContents(path) {
         'misc/snake/snake.exe':
             startSnakeGame,
         'misc/snake/README.txt':
-            'Just a little bit of fun! Walls coming soon.\n' +
-            '(It\'s not really an .exe! Just an in browser canvas game)'
+            'Just a little bit of fun! Walls coming soon. Restarting the .exe will restart the game.\n' +
+            '(It\'s not really an .exe! Just an in-browser canvas game for here)'
     };
     return contents[path] || 'File contents';
 }
